@@ -5,7 +5,7 @@ SAVEHIST=1000
 setopt autocd extendedglob nomatch
 
 # key binding
-bindkey -v
+bindkey -v # this enables vi mode inside of terminal
 bindkey "^[[1;5C" forward-word  # Ctrl + right arrow
 bindkey "^[[1;5D" backward-word # Ctrl + left arrow
 # bindkey "^?" delete-char -n
@@ -38,7 +38,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-alias ll='ls -la'
+alias ll='ls -la --color'
 alias reload="source ~/.zshrc"
 alias usys="cd ~/Documents/repos/work/USYS.FE"
 alias paint="cd ~/Documents/repos/school/paintify"
@@ -46,6 +46,14 @@ alias personal="cd ~/Documents/repos/personal/"
 alias vim="nvim"
 alias vimconfig="cd ~/.config/nvim"
 alias dotfiles="cd ~/dotfiles"
+alias exruna="npx expo run:android"
+alias exclean="npx expo prebuild --clean"
+alias updt="sudo pacman -Syu"
+alias pallet="cd ~/Documents/repos/school/palletify"
+alias formatcommit="git commit --amend --no-edit -a"
+alias swrb="cd ~/Documents/repos/work/RB.Frontend"
+alias runner="cd ~/Documents/repos/work/Runner"
+alias lemon="cd ~/Documents/repos/work/Lemondia.Frontend"
 
 
 export PATH=~/bin:/home/koen/.local/bin:$PATH
