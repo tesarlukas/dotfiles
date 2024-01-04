@@ -40,20 +40,23 @@ compinit
 
 alias ll='ls -la --color'
 alias reload="source ~/.zshrc"
+alias vim="nvim"
+alias updt="sudo pacman -Syu"
+
 alias usys="cd ~/Documents/repos/work/USYS.FE"
 alias paint="cd ~/Documents/repos/school/paintify"
 alias personal="cd ~/Documents/repos/personal/"
-alias vim="nvim"
-alias vimconfig="cd ~/.config/nvim"
+alias vimconfig="cd ~/.config/nvim/"
 alias dotfiles="cd ~/dotfiles"
-alias exruna="npx expo run:android"
-alias exclean="npx expo prebuild --clean"
-alias updt="sudo pacman -Syu"
 alias pallet="cd ~/Documents/repos/school/palletify"
-alias formatcommit="git commit --amend --no-edit -a"
 alias swrb="cd ~/Documents/repos/work/RB.Frontend"
 alias runner="cd ~/Documents/repos/work/Runner"
+
+alias exruna="npx expo run:android"
+alias exclean="npx expo prebuild --clean"
+alias formatcommit="git commit --amend --no-edit -a"
 alias lemon="cd ~/Documents/repos/work/Lemondia.Frontend"
+alias emacs="vim"
 
 
 export PATH=~/bin:/home/koen/.local/bin:$PATH
@@ -67,6 +70,12 @@ export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$HOME/Android/Sdk/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# pyenv load
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 
 # always open tmux or attach to last session on startup
 if [[ -z "$TMUX" ]] && [[ -n "$(tmux ls)" ]]; then
