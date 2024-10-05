@@ -5,12 +5,8 @@ SAVEHIST=1000
 setopt autocd extendedglob nomatch
 
 # key binding
-bindkey -v # this enables vi mode inside of terminal
-bindkey "^[[1;5C" forward-word  # Ctrl + right arrow
-bindkey "^[[1;5D" backward-word # Ctrl + left arrow
-# bindkey "^?" delete-char -n
-
-
+# bindkey -v # this enables vi mode inside of terminal, however it does not seem to be doing anything so I've removed that for now
+#
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/aaron/.zshrc'
@@ -33,8 +29,8 @@ function git_branch {
   fi
 }
 
+# Subtituting prompt with my own
 setopt prompt_subst
-#PROMPT='%F{blue}[%n@%m]%f %F{yellow}%~%f $(git_branch) %# '
 PS1='%F{blue}[%n@%m]%f %F{yellow}%~%f$(git_branch) > '
 
 autoload -Uz compinit
