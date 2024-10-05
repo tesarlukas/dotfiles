@@ -22,7 +22,7 @@ function git_branch {
   branch=$(git symbolic-ref --short HEAD 2>/dev/null)
   if [ -n "$branch" ]; then
     if [ $(git status --porcelain | wc -l) -ne 0 ]; then
-      echo " %F{red}{$branch}%f"
+      echo " %F{magenta}{$branch}%f"
     else
       echo " %F{green}{$branch}%f"
     fi
