@@ -7,7 +7,7 @@ M.ui = {
 }
 
 M.base46 = {
-	theme = "nightlamp",
+	theme = "pastelbeans",
 	transparency = false,
 	changed_themes = {
 		rosepine = {
