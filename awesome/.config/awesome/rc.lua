@@ -267,7 +267,7 @@ end)
 screen.connect_signal("arrange", function(s)
 	local only_one = #s.tiled_clients == 1
 	for _, c in pairs(s.clients) do
-		if  c.maximized or c.fullscreen then
+		if c.maximized or c.fullscreen then
 			c.border_width = 0
 		else
 			c.border_width = beautiful.border_width
@@ -373,15 +373,19 @@ globalkeys = mytable.join(
 	awful.key({ modkey, "Shift" }, "j", function()
 		awful.client.swap.byidx(1)
 	end, { description = "swap with next client by index", group = "client" }),
+
 	awful.key({ modkey, "Shift" }, "k", function()
 		awful.client.swap.byidx(-1)
 	end, { description = "swap with previous client by index", group = "client" }),
-	awful.key({ modkey, "Control" }, "j", function()
+
+	awful.key({ modkey, "Control" }, "h", function()
 		awful.screen.focus_relative(1)
 	end, { description = "focus the next screen", group = "screen" }),
-	awful.key({ modkey, "Control" }, "k", function()
+
+	awful.key({ modkey, "Control" }, "l", function()
 		awful.screen.focus_relative(-1)
 	end, { description = "focus the previous screen", group = "screen" }),
+
 	awful.key({ modkey }, "u", awful.client.urgent.jumpto, { description = "jump to urgent client", group = "client" }),
 
 	-- default cycling function
@@ -929,4 +933,4 @@ os.execute("xset r rate 200 40")
 -- Keyboard layouts
 os.execute('setxkbmap -layout "us,cz(qwerty)" -option "grp:alt_shift_toggle"')
 
-os.execute('')
+os.execute("")
