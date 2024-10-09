@@ -3,14 +3,14 @@ local options = {
 
 	formatters_by_ft = {
 		lua = { "stylua" },
-		javascript = { "prettier" },
-		typescript = { "prettier" },
-		typescriptreact = { "prettier" },
-		javascriptreact = { "prettier" },
-		json = { "prettier" },
-    yaml = { "prettier", "biome" },
+		javascript = { "prettierd" },
+		typescript = { "prettierd" },
+		typescriptreact = { "prettierd" },
+		javascriptreact = { "prettierd" },
+		json = { "prettierd" },
+    yaml = { "prettierd", "biome" },
     python = { "black" },
-    graphql = { "prettier" }
+    graphql = { "prettierd" }
 	},
 }
 
