@@ -97,6 +97,8 @@ map("n", "<C-p>", ":lua require('bufjump').forward()<cr>")
 map("n", "<A-]>", "<CMD>cnext<CR>", { desc = "Quickfix List Next" })
 map("n", "<A-[>", "<CMD>cprev<CR>", { desc = "Quickfix List Prev" })
 
+map("n", "<leader>lr", "<CMD>LspRestart<CR>", { desc = "LSP Restart" })
+
 -- obsidian mappings
 vim.keymap.set("n", "<leader>on", "<cmd>ObsidianNew<CR>", { desc = "Obsidian: Create a new note" })
 vim.keymap.set(
