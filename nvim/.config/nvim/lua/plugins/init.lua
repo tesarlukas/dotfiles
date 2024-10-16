@@ -74,7 +74,7 @@ return {
 	},
 
 	{
-		"sindrets/vim-fugitive",
+		"tpope/vim-fugitive",
 		lazy = false,
 	},
 
