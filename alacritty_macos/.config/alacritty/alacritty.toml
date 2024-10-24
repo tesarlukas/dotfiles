@@ -1,0 +1,30 @@
+# $HOME/.config/alacritty/alacritty.toml
+# by Rito Ghosh 2023-10-06
+
+[window]
+
+opacity = 0.9 # 0.95
+
+padding.x = 5
+padding.y = 5
+
+[font]
+
+normal.family = "JetBrainsMono Nerd Font"
+bold.family = "JetBrainsMono Nerd Font"
+italic.family = "JetBrainsMono Nerd Font"
+bold_italic.family = "JetBrainsMono Nerd Font"
+
+size = 16.0
+
+[shell]
+program = "/bin/zsh"
+args = ["--login"]
+
+[env]
+TERM = "xterm-256color"
+
+[colors]
+normal = { black = '#CCCCCC', red = '#FF6C60', green = '#98C379', yellow = '#EAB700', blue = '#61AFEF', magenta = '#C678DD', cyan = '#56B6C2', white = '#2B2B2B' }
+# bright = { black = '#7C7C7C', red = '#FF6C60', green = '#98C379', yellow = '#EAB700', blue = '#61AFEF', magenta = '#C678DD', cyan = '#56B6C2', white = '#FFFFFF' }
+
