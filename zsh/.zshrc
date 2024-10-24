@@ -46,7 +46,7 @@ alias updt="sudo pacman -Syu"
 alias usys="cd ~/Documents/repos/work/USYS.FE"
 alias paint="cd ~/Documents/repos/school/paintify"
 alias personal="cd ~/Documents/repos/personal/"
-alias vimconfig="cd ~/.config/nvim/"
+alias vimconfig="cd ~/.config/kickstart/"
 alias dotfiles="cd ~/dotfiles"
 alias pallet="cd ~/Documents/repos/school/palletify"
 alias swrb="cd ~/Documents/repos/work/RB.Frontend"
@@ -66,10 +66,14 @@ alias lemon="cd ~/Documents/repos/work/Lemondia.Frontend"
 alias emacs="vim"
 alias startdocker="systemctl start docker"
 
+# yarn packages paths
+export PATH="$(yarn global bin):$PATH"
+
 # nvim mason paths
 export PATH=~/bin:/home/koen/.local/bin:$PATH
 export PATH=~/.local/bin/:$PATH
 export PATH=~/.local/share/nvim/mason/bin:$PATH
+export PATH=~/.local/share/kickstart/mason/bin:$PATH
 
 # android dev
 export ANDROID_HOME=$HOME/Android/Sdk
@@ -87,6 +91,7 @@ eval "$(pyenv init -)"
 
 # editor variable
 export EDITOR=nvim
+export NVIM_APPNAME=kickstart
 
 # fzf config + ctrl-f hotkey
 export FZF_DEFAULT_COMMAND="fd --hidden"
