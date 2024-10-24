@@ -36,6 +36,9 @@ return {
 	{
 		"williamboman/mason.nvim",
 		opts = {
+			ui = {
+				border = "single",
+			},
 			ensure_installed = {
 				"lua-language-server",
 				"custom-elements-languageserver",
@@ -223,4 +226,8 @@ return {
 	-- 		})
 	-- 	end,
 	-- },
+	{
+		"rktjmp/lush.nvim",
+		lazy = false,
+	},
 }
