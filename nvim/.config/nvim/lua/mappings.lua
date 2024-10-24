@@ -8,7 +8,7 @@ nomap("n", "<C-s>")
 nomap("n", "<tab>")
 nomap("n", "<S-tab>")
 nomap("n", "<leader>ds")
-nomap("n", "<leader>cc")
+-- nomap("n", "<leader>cc")
 
 -- my keymappings
 local map = vim.keymap.set
@@ -23,8 +23,9 @@ map("n", "<leader>fm", function()
 	require("conform").format()
 end, { desc = "File Format with conform" })
 
-map("n", "<space>g", ":Git <CR>")
-map("n", "<space>vd", ":Gvdiff <CR>")
+-- Git integration mappings
+map("n", "<leader>g", ":Git <CR>")
+map("n", "<leader>vd", ":Gvdiff <CR>")
 map("n", "<leader>ss", ":Gitsigns stage_hunk<CR>")
 
 map("v", "J", ":m '>+1<CR>gv=gv")
@@ -96,6 +97,8 @@ map("n", "<C-p>", ":lua require('bufjump').forward()<cr>")
 -- quickfix list mappings
 map("n", "<A-]>", "<CMD>cnext<CR>", { desc = "Quickfix List Next" })
 map("n", "<A-[>", "<CMD>cprev<CR>", { desc = "Quickfix List Prev" })
+
+map("n", "<leader>lr", "<CMD>LspRestart<CR>", { desc = "LSP Restart" })
 
 -- obsidian mappings
 vim.keymap.set("n", "<leader>on", "<cmd>ObsidianNew<CR>", { desc = "Obsidian: Create a new note" })

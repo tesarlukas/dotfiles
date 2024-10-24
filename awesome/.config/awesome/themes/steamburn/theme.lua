@@ -33,7 +33,7 @@ local theme = {}
 theme.zenburn_dir = require("awful.util").get_themes_dir() .. "zenburn"
 theme.dir = os.getenv("HOME") .. "/.config/awesome/themes/steamburn"
 theme.wallpaper = theme.dir .. "/wall.png"
-theme.font = "Terminus 10.5"
+theme.font = "Terminus 14"
 theme.fg_normal = "#B0C6E2"
 theme.fg_focus = "#66BDD8"
 theme.fg_urgent = "#93CCCC"
@@ -105,7 +105,7 @@ mytextclock.font = theme.font
 theme.cal = lain.widget.cal({
 	attach_to = { mytextclock },
 	notification_preset = {
-		font = "Terminus 11",
+		font = "Terminus 14",
 		fg = theme.fg_normal,
 		bg = theme.bg_normal,
 	},
@@ -262,7 +262,11 @@ function theme.at_screen_connect(s)
 	s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
 
 	-- Create the wibox
-	s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(20) })
+	s.mywibox = awful.wibar({
+		position = "top",
+		screen = s,
+		height = s.geometry.width == 3440 and dpi(24) or dpi(24), -- Adjust these values as needed
+	})
 
 	-- Add widgets to the wibox
 	s.mywibox:setup({
