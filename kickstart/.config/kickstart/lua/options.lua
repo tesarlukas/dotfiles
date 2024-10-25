@@ -93,3 +93,6 @@ o.softtabstop = 2
 -- Go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 o.whichwrap:append '<>[]hl'
+
+-- highlight the color of the serached term
+vim.cmd("hi CurSearch guifg=#eeffff guibg=#82aaff")

@@ -18,11 +18,8 @@ return {
 
   {
     'pmizio/typescript-tools.nvim',
+    lazy = true,
     dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
-  },
-
-  {
-    'decaycs/decay.nvim',
   },
 
   {
@@ -43,6 +40,7 @@ return {
   {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
+    event = 'User FilePost',
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
       { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
@@ -50,7 +48,7 @@ return {
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      -- { 'j-hui/fidget.nvim', opts = {} },
       -- Allows extra capabilities provided by nvim-cmp
       'hrsh7th/cmp-nvim-lsp',
     },
@@ -79,6 +77,7 @@ return {
 
   {
     'hrsh7th/nvim-cmp',
+    lazy = true,
     event = 'InsertEnter',
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
@@ -105,6 +104,23 @@ return {
           -- },
         },
       },
+
+      {
+        'windwp/nvim-autopairs',
+        lazy = true,
+        dependencies = { 'hrsh7th/nvim-cmp' },
+        opts = {
+          fast_wrap = {},
+          disable_filetype = { 'TelescopePrompt', 'vim' },
+        },
+        config = function(_, opts)
+          require('nvim-autopairs').setup(opts)
+
+          -- setup cmp for autopairs
+          local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+          require('cmp').event:on('confirm_done', cmp_autopairs.on_confirm_done())
+        end,
+      },
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
@@ -116,6 +132,8 @@ return {
 
   {
     'nvim-tree/nvim-tree.lua',
+    lazy = true,
+    cmd = { 'NvimTreeToggle', 'NvimTreeFocus' },
     config = function()
       require('configs.nvim-tree').setup()
     end,
@@ -123,8 +141,7 @@ return {
 
   {
     'lukas-reineke/indent-blankline.nvim',
-    lazy = false,
-    -- event = 'User FilePost',
+    event = 'User FilePost',
     opts = {
       indent = { char = '│', highlight = 'IblChar' },
       scope = { char = '│', highlight = 'IblScopeChar' },
@@ -142,45 +159,41 @@ return {
 
   {
     'williamboman/mason.nvim',
+    lazy = true,
     opts = function()
       require 'configs.mason'
     end,
   },
 
-  {
-    'windwp/nvim-autopairs',
-    event = 'InsertEnter',
-    -- Optional dependency
-    dependencies = { 'hrsh7th/nvim-cmp' },
-    config = function()
-      require('nvim-autopairs').setup {}
-      -- If you want to automatically add `(` after selecting a function or method
-      local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
-      local cmp = require 'cmp'
-      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
-    end,
-  },
+  -- {
+  --   'windwp/nvim-autopairs',
+  --   lazy = true,
+  --   -- Optional dependency
+  --   dependencies = { 'hrsh7th/nvim-cmp' },
+  --   config = function()
+  --     require('nvim-autopairs').setup {}
+  --     -- If you want to automatically add `(` after selecting a function or method
+  --     local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+  --     local cmp = require 'cmp'
+  --     cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+  --   end,
+  -- },
 
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
-
-  {
-    'echasnovski/mini.nvim',
-    config = function()
-      require('configs.mini').setup()
-    end,
-  },
 
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     opts = require 'configs.treesitter',
+    dependencies = {
+      'windwp/nvim-ts-autotag',
+    },
   },
-
-  { 'tpope/vim-sleuth' },
 
   {
     'lewis6991/gitsigns.nvim',
+    evetn = 'User FilePost',
     opts = require 'configs.gitsigns',
   },
 
@@ -192,6 +205,7 @@ return {
 
   {
     'nvim-telescope/telescope.nvim',
+    lazy = true,
     event = 'VimEnter',
     branch = '0.1.x',
     dependencies = {
@@ -221,6 +235,7 @@ return {
 
   { -- Linting
     'mfussenegger/nvim-lint',
+    lazy = true,
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       require('configs.nvim-lint').setup()
@@ -243,10 +258,12 @@ return {
 
   {
     'kwkarlwang/bufjump.nvim',
+    lazy = true,
   },
 
   {
     'norcalli/nvim-colorizer.lua',
+    event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       require('colorizer').setup()
     end,
@@ -254,7 +271,8 @@ return {
 
   {
     'sindrets/vim-fugitive',
-    lazy = false,
+    event = 'VeryLazy',
+    cmd = { 'Git' },
   },
 
   { 'tpope/vim-surround' },
@@ -263,4 +281,12 @@ return {
     'NvChad/volt',
     lazy = true,
   },
+
+  {
+    'dstein64/vim-startuptime',
+  },
+
+  -- {
+  --   'decaycs/decay.nvim',
+  -- },
 }

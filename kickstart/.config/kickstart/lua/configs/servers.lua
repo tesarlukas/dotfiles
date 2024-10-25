@@ -8,13 +8,9 @@ local servers = {
   'html',
   'cssls',
   -- "clangd",
-  -- "tsserver",
   'jsonls',
-  -- "volar",
   'graphql',
-  "eslint",
   -- "rust_analyzer",
-  -- 'tailwindcss',
 }
 
 local lspconfig = require 'lspconfig'
