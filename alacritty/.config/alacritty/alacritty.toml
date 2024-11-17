@@ -17,7 +17,7 @@ bold_italic.family = "JetBrainsMono Nerd Font"
 
 size = 12.0
 
-[shell]
+[terminal.shell]
 program = "/bin/zsh"
 args = ["--login"]
 
@@ -27,4 +27,3 @@ TERM = "xterm-256color"
 [colors]
 normal = { black = '#CCCCCC', red = '#FF6C60', green = '#98C379', yellow = '#EAB700', blue = '#61AFEF', magenta = '#C678DD', cyan = '#56B6C2', white = '#2B2B2B' }
 # bright = { black = '#7C7C7C', red = '#FF6C60', green = '#98C379', yellow = '#EAB700', blue = '#61AFEF', magenta = '#C678DD', cyan = '#56B6C2', white = '#FFFFFF' }
-

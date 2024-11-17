@@ -70,7 +70,7 @@ local function run_once(cmd_arr)
 	end
 end
 
-run_once({ "urxvtd", "unclutter -root", "picom -b", "copyq", "lxsession", "solaar --restart-on-wake-up -w hide" }) -- comma-separated entries
+run_once({ "urxvtd", "unclutter -root", "picom -b", "copyq", "lxsession" }) -- comma-separated entries
 
 -- This function implements the XDG autostart specification
 --[[
