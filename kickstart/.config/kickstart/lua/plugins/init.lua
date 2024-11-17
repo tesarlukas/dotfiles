@@ -133,7 +133,7 @@ return {
   {
     'nvim-tree/nvim-tree.lua',
     lazy = true,
-    cmd = { 'NvimTreeToggle', 'NvimTreeFocus' },
+    cmd = { 'NvimTreeToggle' },
     config = function()
       require('configs.nvim-tree').setup()
     end,
@@ -282,11 +282,8 @@ return {
     lazy = true,
   },
 
-  {
-    'dstein64/vim-startuptime',
-  },
-
   -- {
   --   'decaycs/decay.nvim',
+  --   lazy = true,
   -- },
 }

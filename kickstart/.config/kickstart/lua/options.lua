@@ -78,7 +78,7 @@ o.listchars = { tab = '  ', trail = ' ', nbsp = '␣' }
 o.fillchars:append { eob = ' ' }
 
 -- Preview substitutions live, as you type!
-o.inccommand = 'split'
+o.inccommand = 'nosplit'
 
 -- Minimal number of screen lines to keep above and below the cursor.
 o.scrolloff = 10
@@ -94,5 +94,9 @@ o.softtabstop = 2
 -- when cursor reaches end/beginning of line
 o.whichwrap:append '<>[]hl'
 
--- highlight the color of the serached term
-vim.cmd("hi CurSearch guifg=#eeffff guibg=#82aaff")
+-- vim.opt.guicursor = {
+--   'n-v-c:block', -- Normal, visual, command modes: block cursor (no blink)
+--   'i-ci-ve:block', -- Insert mode: blinking block (4Hz)
+--   'r-cr:block', -- Replace mode: block cursor
+--   'o:block', -- Operator pending mode: block cursor
+-- }
