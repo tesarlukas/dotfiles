@@ -47,7 +47,6 @@ map('n', '<C-p>', ":lua require('bufjump').forward()<cr>")
 map('n', '<C-n>', '<cmd>NvimTreeToggle<CR>')
 
 -- GRAPPLE
--- map('n', '<leader>1', require('grapple').select { index = 1 })
 map('n', '<leader>h', require('grapple').toggle)
 map('n', '<leader>H', require('grapple').toggle_tags)
 map('n', '<leader>1', '<cmd>Grapple select index=1<CR>')

@@ -27,12 +27,14 @@ require('typescript-tools').setup {
   on_init = on_init,
   on_attach = on_attach,
   capabilities = capabilities,
+  filetypes = { 'javascriptreact', 'typescriptreact', 'javascript', 'typescript', 'graphql' },
 }
 
 lspconfig.tailwindcss.setup {
   on_init = on_init,
   on_attach = on_attach,
   capabilities = capabilities,
+  filetypes = { 'javascriptreact', 'typescriptreact', 'javascript', 'typescript', 'graphql' },
   settings = {
     tailwindCSS = {
       experimental = {
