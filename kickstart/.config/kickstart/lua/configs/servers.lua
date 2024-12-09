@@ -46,6 +46,36 @@ lspconfig.tailwindcss.setup {
   },
 }
 
+lspconfig.julials.setup {
+  on_init = on_init,
+  -- on_attach = function(client, bufnr)
+  --   on_attach(client, bufnr)
+  --
+  --   -- Debug handler for diagnostics
+  --   client.handlers['textDocument/publishDiagnostics'] = function(_, result, ctx, config)
+  --     print('Received diagnostics:', vim.inspect(result.diagnostics))
+  --     vim.lsp.handlers['textDocument/publishDiagnostics'](_, result, ctx, config)
+  --   end
+  -- end,
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    -- Enable StaticLint diagnostics
+    julia = {
+      lint = {
+        enabled = true,
+        run = 'true',
+        missingrefs = 'all',
+        type = true, -- This might be key
+        signature = true, -- And this
+      },
+      format = {
+        indent = 4,
+      },
+    },
+  },
+}
+
 lspconfig.emmet_ls.setup {
   capabilities = capabilities,
   filetypes = {
