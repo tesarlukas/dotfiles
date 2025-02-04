@@ -53,9 +53,13 @@ alias swrb="cd ~/Documents/repos/work/RB.Frontend"
 alias runner="cd ~/Documents/repos/work/Runner"
 alias rustapps="cd ~/Documents/repos/personal/rust_things"
 alias nekrachni="cd ~/Documents/repos/work/nekrachni/frontend"
+alias benekrachni="cd ~/Documents/repos/work/nekrachni/backendV2/"
 alias csharp="cd ~/Documents/repos/personal/csharp_things/"
 alias knosq="cd ~/Documents/school/knosq/db_stuff/"
 alias dipl="cd ~/Documents/repos/school/tauri-nextjs-template"
+alias obsi="cd ~/Documents/obsidian/my_vault/"
+alias goal="cd ~/Documents/repos/personal/goaltracker/"
+alias nectar="cd ~/Documents/repos/school/nectar/"
 
 # shortands for various CLI tools
 alias exruna="npx expo run:android"
