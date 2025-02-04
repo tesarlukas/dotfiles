@@ -1,0 +1,78 @@
+diff --git a/kickstart/.config/kickstart/lua/configs/conform.lua b/kickstart/.config/kickstart/lua/configs/conform.lua
+index 6089b6c..bfb186b 100644
+--- a/kickstart/.config/kickstart/lua/configs/conform.lua
++++ b/kickstart/.config/kickstart/lua/configs/conform.lua
+@@ -19,14 +19,25 @@ local opts = {
+   -- end,
+   formatters_by_ft = {
+     lua = { 'stylua' },
+-    javascript = { 'prettierd' },
+-    typescript = { 'prettierd' },
+-    typescriptreact = { 'prettierd' },
+-    javascriptreact = { 'prettierd' },
+-    json = { 'prettierd' },
+-    yaml = { 'prettierd', 'biome' },
+-    python = { 'black' },
+-    graphql = { 'prettierd' },
++
++    -- eslint + prettierd
++    -- javascript = { 'prettierd' },
++    -- typescript = { 'prettierd' },
++    -- typescriptreact = { 'prettierd' },
++    -- javascriptreact = { 'prettierd' },
++    -- json = { 'prettierd' },
++    -- yaml = { 'prettierd', 'biome' },
++    -- python = { 'black' },
++    -- graphql = { 'prettierd' },
++
++    -- biome
++    javascript = { 'biome' },
++    typescript = { 'biome' },
++    typescriptreact = { 'biome' },
++    javascriptreact = { 'biome' },
++    json = { 'biome' },
++    yaml = { 'biome' },
++    graphql = { 'biome' },
+   },
+ }
+ 
+diff --git a/kickstart/.config/kickstart/lua/configs/nvim-lint.lua b/kickstart/.config/kickstart/lua/configs/nvim-lint.lua
+index 6cd4f10..f3e367e 100644
+--- a/kickstart/.config/kickstart/lua/configs/nvim-lint.lua
++++ b/kickstart/.config/kickstart/lua/configs/nvim-lint.lua
+@@ -4,10 +4,19 @@ function M.setup()
+   local lint = require 'lint'
+   lint.linters_by_ft = {
+     -- markdown = { 'markdownlint' },
+-    typescript = { 'eslint_d', 'cspell' },
+-    javascript = { 'eslint_d', 'cspell' },
+-    typescriptreact = { 'eslint_d', 'cspell' },
+-    javascriptreact = { 'eslint_d', 'cspell' },
++
++    -- eslint + prettier
++    -- typescript = { 'eslint_d', 'cspell' },
++    -- javascript = { 'eslint_d', 'cspell' },
++    -- typescriptreact = { 'eslint_d', 'cspell' },
++    -- javascriptreact = { 'eslint_d', 'cspell' },
++
++    -- biome
++    typescript = { 'cspell' },
++    javascript = { 'cspell' },
++    typescriptreact = { 'cspell' },
++    javascriptreact = { 'cspell' },
++
+   }
+ 
+   -- To allow other plugins to add linters to require('lint').linters_by_ft,
+diff --git a/kickstart/.config/kickstart/lua/configs/servers.lua b/kickstart/.config/kickstart/lua/configs/servers.lua
+index 03bca39..1f3f7cf 100644
+--- a/kickstart/.config/kickstart/lua/configs/servers.lua
++++ b/kickstart/.config/kickstart/lua/configs/servers.lua
+@@ -10,6 +10,7 @@ local servers = {
+   -- "clangd",
+   'jsonls',
+   'graphql',
++  'biome'
+   -- "rust_analyzer",
+ }
+ 
