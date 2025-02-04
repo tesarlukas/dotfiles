@@ -101,3 +101,7 @@ end, { desc = '[T][h]eme switcher' })
 
 -- Typescript tools
 map('n', '<leader>ru', '<cmd>TSToolsRemoveUnusedImports<CR>', { desc = '[R]emove [U]nused (TS)' })
+
+-- Obsidian
+map('n', '<leader>od', '<cmd>ObsidianDailies<CR>', { desc = '[O]bsidian [D]ailies'})
+map('n', '<leader>ot', '<cmd>ObsidianTemplate<CR>', { desc = '[O]bsidian [T]emplates'})
