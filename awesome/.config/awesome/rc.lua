@@ -415,9 +415,18 @@ globalkeys = mytable.join(
 	-- 		client.focus:raise()
 	-- 	end
 	-- end, { description = "Cycle windows backward", group = "client"}),
+	--
+	--
+	-- toggle opacity functionality
+	awful.key({ modkey }, "b", function()
+		for s in screen do
+			s.mywibox.opacity_enabled = not s.mywibox.opacity_enabled
+			s.mywibox.opacity = s.mywibox.opacity_enabled and 0.6 or 1.0
+		end
+	end, { description = "toggle wibox opacity", group = "awesome" }),
 
 	-- Show/hide wibox
-	awful.key({ modkey }, "b", function()
+	awful.key({ modkey, "Shift" }, "b", function()
 		for s in screen do
 			s.mywibox.visible = not s.mywibox.visible
 			if s.mybottomwibox then

@@ -33,7 +33,7 @@ local theme = {}
 theme.zenburn_dir = require("awful.util").get_themes_dir() .. "zenburn"
 theme.dir = os.getenv("HOME") .. "/.config/awesome/themes/steamburn"
 theme.wallpaper = theme.dir .. "/wall.png"
-theme.font = "Terminus 14"
+theme.font = "Terminus 12"
 theme.fg_normal = "#B0C6E2"
 theme.fg_focus = "#66BDD8"
 theme.fg_urgent = "#93CCCC"
@@ -105,7 +105,7 @@ mytextclock.font = theme.font
 theme.cal = lain.widget.cal({
 	attach_to = { mytextclock },
 	notification_preset = {
-		font = "Terminus 14",
+		font = "Terminus 12",
 		fg = theme.fg_normal,
 		bg = theme.bg_normal,
 	},
@@ -262,11 +262,14 @@ function theme.at_screen_connect(s)
 	s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
 
 	-- Create the wibox
-	s.mywibox = awful.wibar({
-		position = "top",
-		screen = s,
-		height = s.geometry.width == 3440 and dpi(24) or dpi(24), -- Adjust these values as needed
-	})
+	s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(22) })
+
+	-- dual monitor
+	-- s.mywibox = awful.wibar({
+	-- 	position = "top",
+	-- 	screen = s,
+	-- 	height = s.geometry.width == 3440 and dpi(24) or dpi(24), -- Adjust these values as needed
+	-- })
 
 	-- Add widgets to the wibox
 	s.mywibox:setup({
@@ -298,6 +301,21 @@ function theme.at_screen_connect(s)
 			mytextclock,
 		},
 	})
-end
 
+	-- opacity
+	s.mywibox.opacity_enabled = true
+	s.mywibox.opacity = 0.65
+
+	s.mywibox:connect_signal("mouse::enter", function()
+		if s.mywibox.opacity_enabled then
+			s.mywibox.opacity = 1.0
+		end
+	end)
+
+	s.mywibox:connect_signal("mouse::leave", function()
+		if s.mywibox.opacity_enabled then
+			s.mywibox.opacity = 0.65
+		end
+	end)
+end
 return theme
