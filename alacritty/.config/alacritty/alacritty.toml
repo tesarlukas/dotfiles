@@ -5,8 +5,8 @@
 
 opacity = 0.9 # 0.95
 
-padding.x = 5
-padding.y = 5
+padding.x = 4
+padding.y = 4
 
 [font]
 
