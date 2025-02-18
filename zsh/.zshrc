@@ -116,3 +116,4 @@ else
     [ -z "$TMUX" ] && exec tmux
 fi
 
+export PATH=$PATH:$HOME/.maestro/bin
