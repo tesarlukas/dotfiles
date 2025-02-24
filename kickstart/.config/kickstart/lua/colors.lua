@@ -6,7 +6,9 @@ hl(0, 'IndentBlanklineScope', { fg = '#43413f', nocombine = true })
 hl(0, 'hl-WinSeparator', { fg = '#43413f', nocombine = true })
 
 -- highlight the color of the serached term
-vim.cmd("hi CurSearch guifg=#eeffff guibg=#82aaff")
+-- vim.cmd("hi CurSearch guifg=#eeffff guibg=#82aaff")
+vim.cmd("hi CurSearch guifg=#323c41 guibg=#d699b6")
+
 
 ---@class PaletteColors
 local palette = {

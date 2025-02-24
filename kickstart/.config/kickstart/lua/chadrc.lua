@@ -1,8 +1,8 @@
 local options = {
 
   base46 = {
-    theme = 'material-darker',
-    transparency = false,
+    theme = 'everforest',
+    transparency = true,
     changed_themes = {
       rosepine = {
         base_16 = {
@@ -17,6 +17,11 @@ local options = {
       ['decay'] = {
         base_30 = {
           darker_black = '#171B20',
+        },
+      },
+      ['everforest'] = {
+        base_30 = {
+          darker_black = '#2b3339',
         },
       },
     },
@@ -45,8 +50,7 @@ local options = {
       enabled = true,
       theme = 'default', -- default/vscode/vscode_colored/minimal
       -- default/round/block/arrow separators work only for default statusline theme
-      -- round and block will work for minimal theme only
-      separator_style = 'default',
+      separator_style = 'block',
       order = nil,
       modules = nil,
     },
