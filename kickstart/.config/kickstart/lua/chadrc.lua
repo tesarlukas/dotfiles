@@ -19,9 +19,14 @@ local options = {
           darker_black = '#171B20',
         },
       },
-      ['everforest'] = {
+      everforest = {
         base_30 = {
-          darker_black = '#2b3339',
+          black = '#181917',
+          darker_black = '#181917',
+          -- darker_black = '#2b3339' -- origblack,
+        },
+        base_16 = {
+          base00 = '#181917',
         },
       },
     },
