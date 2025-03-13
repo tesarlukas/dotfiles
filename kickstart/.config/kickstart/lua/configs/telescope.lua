@@ -33,6 +33,11 @@ function M.setup()
     -- },
     -- pickers = {}
     defaults = {
+      file_ignore_patterns = {
+        'node_modules',
+        'yarn.lock',
+        '%.snap',
+      },
       layout_config = {
         horizontal = {
           prompt_position = 'bottom',
