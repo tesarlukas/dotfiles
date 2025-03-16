@@ -103,5 +103,8 @@ end, { desc = '[T][h]eme switcher' })
 map('n', '<leader>ru', '<cmd>TSToolsRemoveUnusedImports<CR>', { desc = '[R]emove [U]nused (TS)' })
 
 -- Obsidian
-map('n', '<leader>od', '<cmd>ObsidianDailies<CR>', { desc = '[O]bsidian [D]ailies'})
-map('n', '<leader>ot', '<cmd>ObsidianTemplate<CR>', { desc = '[O]bsidian [T]emplates'})
+map('n', '<leader>od', '<cmd>ObsidianDailies<CR>', { desc = '[O]bsidian [D]ailies' })
+map('n', '<leader>ot', '<cmd>ObsidianTemplate<CR>', { desc = '[O]bsidian [T]emplates' })
+
+-- Supermaven
+map('n', '<leader>ts', ':SupermavenToggle<CR>', { desc = '[T]oggle [S]upermaven' })
