@@ -60,6 +60,7 @@ alias dipl="cd ~/Documents/repos/school/tauri-nextjs-template"
 alias obsi="cd ~/Documents/obsidian/my_vault/"
 alias goal="cd ~/Documents/repos/personal/goaltracker/"
 alias nectar="cd ~/Documents/repos/school/nectar/"
+alias golang="cd ~/Documents/repos/personal/golang/"
 
 # shortands for various CLI tools
 alias exruna="npx expo run:android"
