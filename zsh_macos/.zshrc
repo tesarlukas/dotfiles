@@ -8,6 +8,7 @@ bindkey -v
 
 # Reduce delay when switching modes (from 0.4 seconds to 0.1)
 export KEYTIMEOUT=1
+export TERMINAL=alacritty
 
 # Allow backspace to delete in insert mode
 bindkey "^?" backward-delete-char
