@@ -12,8 +12,15 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 # defaults write -g NSWindowShouldDragOnGesture -bool true
 
+
 after-startup-command = [
-    'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0'
+    'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0',
+    'exec-and-forget sketchybar'
+]
+
+# Notify Sketchybar about workspace change
+exec-on-workspace-change = ['/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
 ]
 
 [mode.main.binding]
@@ -25,7 +32,7 @@ tell application "Alacritty"
 end tell'
 '''
 
-alt-w = '''exec-and-forget osascript -e '
+alt-q = '''exec-and-forget osascript -e '
 tell application "System Events" to keystroke "q" using {command down}'
 '''
 
@@ -93,6 +100,10 @@ h = 'resize width +40'
 j = 'resize height +40'
 k = 'resize height -40'
 l = 'resize width -40'
+shift-h = 'resize width +80'
+shift-j = 'resize height +80'
+shift-k = 'resize height -80'
+shift-l = 'resize width -80'
 enter = 'mode main'
 esc = 'mode main'
 
