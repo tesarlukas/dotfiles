@@ -35,7 +35,10 @@ return {
     },
   },
 
-  { 'Bilal2453/luvit-meta', lazy = true },
+  {
+    'Bilal2453/luvit-meta',
+    lazy = true
+  },
 
   {
     -- Main LSP Configuration
@@ -226,7 +229,10 @@ return {
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+      {
+        'nvim-tree/nvim-web-devicons',
+        enabled = vim.g.have_nerd_font
+      },
     },
     config = function()
       require('configs.telescope').setup()
@@ -300,62 +306,68 @@ return {
   },
 
   {
-    'epwalsh/obsidian.nvim',
-    version = '*',
-    lazy = true,
-    ft = 'markdown',
-    -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-    event = {
-      -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-      -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
-      -- refer to `:h file-pattern` for more examples
-      'BufReadPre '
-        .. vim.fn.expand '~'
-        .. '/Dropbox/my_vault/*.md',
-      'BufNewFile ' .. vim.fn.expand '~' .. '/Dropbox/my_vault/*.md',
-    },
-    dependencies = {
-      -- Required.
-      'nvim-lua/plenary.nvim',
-
-      -- see below for full list of optional dependencies 👇
-    },
-    opts = {
-      workspaces = {
-        {
-          name = 'myvault',
-          path = '~/Documents/obsidian/my_vault/',
-        },
-      },
-      daily_notes = {
-        -- Optional, if you keep daily notes in a separate directory.
-        folder = 'Daily notes',
-        -- Optional, if you want to change the date format for the ID of daily notes.
-        date_format = '%Y-%m-%d',
-        -- Optional, if you want to change the date format of the default alias of daily notes.
-        alias_format = '%B %-d, %Y',
-        -- Optional, default tags to add to each new daily note created.
-        default_tags = { 'daily-notes' },
-        -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-        template = nil,
-      },
-
-      templates = {
-        folder = 'Templates',
-      },
-      -- see below for full list of options 👇
-    },
+    "supermaven-inc/supermaven-nvim",
+    config = function()
+      require("configs/supermaven").setup()
+    end,
   },
+
+  -- TODO: temporarily disable obsidian as it is not setupn new Mac
+  -- {
+  --   'epwalsh/obsidian.nvim',
+  --   version = '*',
+  --   lazy = true,
+  --   ft = 'markdown',
+  --   -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
+  --   event = {
+  --     -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+  --     -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
+  --     -- refer to `:h file-pattern` for more examples
+  --     'BufReadPre '
+  --       .. vim.fn.expand '~'
+  --       .. '/Dropbox/my_vault/*.md',
+  --     'BufNewFile ' .. vim.fn.expand '~' .. '/Dropbox/my_vault/*.md',
+  --   },
+  --   dependencies = {
+  --     -- Required.
+  --     'nvim-lua/plenary.nvim',
+  --
+  --     -- see below for full list of optional dependencies 👇
+  --   },
+  --   opts = {
+  --     workspaces = {
+  --       {
+  --         name = 'myvault',
+  --         path = '~/Documents/obsidian/my_vault/',
+  --       },
+  --     },
+  --     daily_notes = {
+  --       -- Optional, if you keep daily notes in a separate directory.
+  --       folder = 'Daily notes',
+  --       -- Optional, if you want to change the date format for the ID of daily notes.
+  --       date_format = '%Y-%m-%d',
+  --       -- Optional, if you want to change the date format of the default alias of daily notes.
+  --       alias_format = '%B %-d, %Y',
+  --       -- Optional, default tags to add to each new daily note created.
+  --       default_tags = { 'daily-notes' },
+  --       -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
+  --       template = nil,
+  --     },
+  --
+  --     templates = {
+  --       folder = 'Templates',
+  --     },
+  --     -- see below for full list of options 👇
+  --   },
+  -- },
 
   {
     'tpope/vim-sleuth',
   },
 
   {
-    'supermaven-inc/supermaven-nvim',
-    config = function()
-      require('configs.supermaven').setup()
-    end,
+    'sindrets/diffview.nvim',
+    -- lazy = true
   },
 
   -- 'dstein64/vim-startuptime', -- just uncomment if measuring
