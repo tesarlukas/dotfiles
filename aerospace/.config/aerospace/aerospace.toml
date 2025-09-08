@@ -15,14 +15,8 @@ after-login-command = []
 after-startup-command = [
     # JankyBorders has a built-in detection of already running process,
     # so it won't be run twice on AeroSpace restart
-    'exec-and-forget /opt/homebrew/opt/sketchybar/bin/sketchybar',
-    # 'exec-and-forget /opt/homebrew/opt/borders/bin/borders active_color="glow(0xd943ff64)" inactive_color=0x20494d64 width=8.0'
-]
-
-exec-on-workspace-change = [
-    '/bin/bash',
-    '-c',
-    '/opt/homebrew/opt/sketchybar/bin/sketchybar --trigger aerospace_workspace_change AEROSPACE_FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE AEROSPACE_PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE',
+    # "JankyBorders turn off for now",
+    # 'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0'
 ]
 
 # Start AeroSpace at login
@@ -70,12 +64,13 @@ on-focus-changed = ['move-mouse window-lazy-center']
 10 = '^EPSON'
 
 [gaps]
-inner.horizontal = 20
-inner.vertical = 20
-outer.top = [{ monitor."main" = 5 }, 40]
-outer.left = 15
-outer.bottom = 15
-outer.right = 15
+inner.horizontal = 15
+inner.vertical = 15
+# outer.top = [{ monitor."main" = 15 }, 40]
+outer.top = 15
+outer.left = 10
+outer.bottom = 10
+outer.right = 10
 
 # See https://nikitabobko.github.io/AeroSpace/guide#exec-env-vars
 [exec] # Again, you don't need to copy all config sections to your config.
@@ -109,14 +104,29 @@ PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 # alt-enter = 'exec-and-forget open -n /System/Applications/Utilities/Terminal.app'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-alt-slash = 'layout tiles horizontal vertical'
-alt-comma = 'layout accordion horizontal vertical'
+alt-t = 'layout tiles horizontal vertical'
+alt-a = 'layout accordion horizontal vertical'
+alt-space = [ 'layout floating tiling', 'mode main']
+alt-f = ['fullscreen']
+
+# Force quit the application
+alt-shift-q = '''exec-and-forget osascript -e "
+tell application \\"System Events\\"
+    set frontApp to name of first process whose frontmost is true
+    do shell script \\"killall \\" & quoted form of frontApp
+end tell"'''
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-alt-h = 'focus left --boundaries all-monitors-outer-frame'
-alt-j = 'focus down --boundaries all-monitors-outer-frame'
-alt-k = 'focus up --boundaries all-monitors-outer-frame'
-alt-l = 'focus right --boundaries all-monitors-outer-frame'
+# alt-h = 'focus left --boundaries all-monitors-outer-frame'
+# alt-j = 'focus down --boundaries all-monitors-outer-frame'
+# alt-k = 'focus up --boundaries all-monitors-outer-frame'
+# alt-l = 'focus right --boundaries all-monitors-outer-frame'
+
+# Let 'focus' work when all windows are floating
+alt-h = 'exec-and-forget aerospace focus --boundaries-action wrap-around-the-workspace left || $HOME/.config/aerospace/scripts/focus-window.sh left'
+alt-j = 'exec-and-forget aerospace focus --boundaries-action wrap-around-the-workspace down || $HOME/.config/aerospace/scripts/focus-window.sh down'
+alt-k = 'exec-and-forget aerospace focus --boundaries-action wrap-around-the-workspace up || $HOME/.config/aerospace/scripts/focus-window.sh up'
+alt-l = 'exec-and-forget aerospace focus --boundaries-action wrap-around-the-workspace right || $HOME/.config/aerospace/scripts/focus-window.sh right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
 alt-shift-h = 'move left'
@@ -124,9 +134,16 @@ alt-shift-j = 'move down'
 alt-shift-k = 'move up'
 alt-shift-l = 'move right'
 
+# disable the cmd-h as it sucks
+cmd-h = []
+# dunno what it is doing but I don't like it
+alt-cmd-h = []
+
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
-alt-shift-minus = 'resize smart -50'
-alt-shift-equal = 'resize smart +50'
+alt-cmd-minus = 'resize smart -40'
+alt-cmd-equal = 'resize smart +40'
+
+alt-tab = 'focus-back-and-forth'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 alt-1 = 'workspace 1'
@@ -152,10 +169,7 @@ alt-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
 alt-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
 alt-shift-0 = ['move-node-to-workspace 10', 'workspace 10']
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-alt-tab = 'workspace-back-and-forth'
-# See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
-alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+# Cycle through all windows regardless of workspace
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-shift-semicolon = 'mode service'
@@ -164,17 +178,16 @@ alt-shift-semicolon = 'mode service'
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 
 # disabled hide window
-# cmd-h = []
-# rotate hangul and english
 
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
+
 #s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
-f = [
-    'layout floating tiling',
-    'mode main',
-] # Toggle between floating and tiling layout
+# f = [
+#     'layout floating tiling',
+#     'mode main',
+# ] # Toggle between floating and tiling layout
 alt-shift-semicolon = [
     'fullscreen',
     'mode main',
@@ -198,29 +211,29 @@ alt-shift-r = ['exec-and-forget /opt/homebrew/bin/sketchybar --reload']
 #run = ['layout floating']
 
 [[on-window-detected]]
-if.app-id = 'com.kakao.KakaoTalkMac'
-run = ['move-node-to-workspace 8']
-
-[[on-window-detected]]
-if.app-id = 'com.tdesktop.Telegram'
-run = ['move-node-to-workspace 8']
-
-[[on-window-detected]]
-if.app-id = 'com.hnc.Discord'
-run = ['move-node-to-workspace 8']
-
-[[on-window-detected]]
-if.app-id = 'com.clickup.desktop-app'
-run = ['move-node-to-workspace 5']
+if.app-id = 'com.brave.Browser'
+run = ['move-node-to-workspace 1']
 
 [[on-window-detected]]
 if.app-id = "md.obsidian"
-run = ['move-node-to-workspace 9']
+run = ['move-node-to-workspace 2']
+
+[[on-window-detected]]
+if.app-id = 'com.brave.Browser'
+run = ['move-node-to-workspace 3']
+
+[[on-window-detected]]
+if.app-id = "com.tinyspeck.slackmacgap"
+run = ['move-node-to-workspace 4']
+
+[[on-window-detected]]
+if.app-id = 'com.hnc.Discord'
+run = ['move-node-to-workspace 4']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.weather'
 run = ['layout floating']
 
 [[on-window-detected]]
-if.app-id = 'com.dygmalab.bazecor'
+if.app-id = 'com.apple.weather'
 run = ['layout floating']
