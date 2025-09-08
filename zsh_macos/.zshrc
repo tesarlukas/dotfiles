@@ -55,13 +55,14 @@ alias reload="source ~/.zshrc"
 alias vim="nvim"
 alias ..="cd .."
 alias emacs="vim"
+alias lf="yazi"
 
 # editor variable
 export EDITOR=nvim
 export NVIM_APPNAME=kickstart
 
 # cd shortcuts
-alias nekrachni="cd ~/documents/work/frontend/"
+alias nekrachni="cd ~/documents/work/repos/frontend/"
 alias vimconfig="cd ~/.config/kickstart"
 alias dotfiles="cd ~/dotfiles"
 
@@ -70,8 +71,8 @@ alias exruna="npx expo run:android"
 alias exclean="npx expo prebuild --clean"
 
 # python
-export PATH=$HOME/.pyenv/bin:$PATH
-eval "$(pyenv init --path)"
+# export PATH=$HOME/.pyenv/bin:$PATH
+# eval "$(pyenv init --path)"
 
 #package manager for ruby
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -82,11 +83,13 @@ export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH=/opt/homebrew/bin:$PATH
 
-#android official
-export ANDROID_HOME="/usr/local/share/android-commandlinetools"
-export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
+# android 
 
-#mason packages
+export ANDROID_HOME="$HOME/Library/Android/sdk/"
+export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
+export PATH="$ANDROID_HOME/platform-tools:$PATH"
+
+# mason packages
 export PATH=$PATH:~/.local/share/kickstart/mason/bin
 export PATH=$PATH:~/.local/share/nvim/mason/bin
 
@@ -95,14 +98,6 @@ export PATH=$PATH:~/.local/share/nvim/mason/bin
 
 # Loading NVM
 export NVM_DIR="$HOME/.nvm"
-# This line creates a dummy nvm function
-function nvm() {
-    unset -f nvm
-    # Load nvm
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-    # Call nvm with our arguments
-    nvm "$@"
-}
 
 # always open tmux or attach to last session on startup
 if [[ -z "$TMUX" ]] && [[ -n "$(tmux ls)" ]]; then
@@ -111,4 +106,9 @@ else
   [ -z "$TMUX" ] && exec tmux
 fi
 
+# load zsh autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Loading NVM immediately on shell init
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
