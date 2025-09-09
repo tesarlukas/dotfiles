@@ -4,9 +4,9 @@ function M.setup()
   -- Configure Supermaven to not show suggestions automatically
   require('supermaven-nvim').setup {
     keymaps = {
-      accept_suggestion = '<A-l>',
-      clear_suggestion = '<A-k>',
-      accept_word = '<A-j>',
+      accept_suggestion = '<Right>',
+      clear_suggestion = '<Left>',
+      accept_word = '<Down>',
     },
     ignore_filetypes = { cpp = true },
     color = {
@@ -16,9 +16,6 @@ function M.setup()
     log_level = 'info',
     disable_inline_completion = false,
     disable_keymaps = false,
-    condition = function()
-      return true -- This disables automatic suggestions (true = stop Supermaven)
-    end,
   }
 end
 
