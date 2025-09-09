@@ -84,10 +84,16 @@ map('n', '<leader>ds', vim.diagnostic.setloclist, { desc = 'LSP diagnostic locli
 map('n', '<A-]>', '<CMD>cnext<CR>', { desc = 'Quickfix List Next' })
 map('n', '<A-[>', '<CMD>cprev<CR>', { desc = 'Quickfix List Prev' })
 
--- Fugitive and GitSigns stuff
+-- Git stuff
+-- Fugitive
 map('n', '<space>g', ':Git <CR>', { desc = 'Open [G]it integration' })
-map('n', '<space>vd', ':Gvdiff <CR>')
+-- DiffView stuff
+map('n', '<space>vdo', ':DiffviewOpen <CR>')
+map('n', '<space>vdc', ':DiffviewClose <CR>')
+map('n', '<space>vdm', ':DiffviewOpen main <CR>')
+-- GitSigns stuff
 map('n', '<leader>ss', ':Gitsigns stage_hunk<CR>')
+map('n', '<leader>vd', ':Gitsigns diffthis<CR>')
 
 -- Toggle transparency
 map('n', '<leader>tt', function()
