@@ -3,10 +3,10 @@ local M = {}
 function M.setup()
   local lint = require 'lint'
   lint.linters_by_ft = {
-    typescript = { 'eslint_d', 'cspell' },
-    javascript = { 'eslint_d', 'cspell' },
-    typescriptreact = { 'eslint_d', 'cspell' },
-    javascriptreact = { 'eslint_d', 'cspell' },
+    typescript = { 'cspell' },
+    javascript = { 'cspell' },
+    typescriptreact = { 'cspell' },
+    javascriptreact = { 'cspell' },
   }
 
   -- Create autocommand which carries out the actual linting

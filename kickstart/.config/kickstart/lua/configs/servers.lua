@@ -10,6 +10,7 @@ local servers = {
   -- "clangd",
   'jsonls',
   'graphql',
+  'eslint'
   -- "rust_analyzer",
 }
 
@@ -67,7 +68,7 @@ lspconfig.julials.setup {
         enabled = true,
         run = 'true',
         missingrefs = 'all',
-        type = true, -- This might be key
+        type = true,      -- This might be key
         signature = true, -- And this
       },
       format = {
