@@ -18,7 +18,7 @@ M.on_attach = function(client, bufnr)
   map('n', 'gD', vim.lsp.buf.declaration, opts '[G]oto [D]eclaration')
 
   -- Add cursor highlight functionality
-  if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+  if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
     local highlight_augroup = vim.api.nvim_create_augroup('lsp-highlight', { clear = false })
     vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
       buffer = bufnr,
@@ -44,7 +44,7 @@ end
 
 -- disable semanticTokens
 M.on_init = function(client, _)
-  if client.supports_method 'textDocument/semanticTokens' then
+  if client:supports_method 'textDocument/semanticTokens' then
     client.server_capabilities.semanticTokensProvider = nil
   end
 end
@@ -73,11 +73,12 @@ M.defaults = function()
   dofile(vim.g.base46_cache .. 'lsp')
   require('nvchad.lsp').diagnostic_config()
 
-  require('lspconfig').lua_ls.setup {
-    on_attach = M.on_attach,
+  vim.lsp.config('lua_ls', {
+    cmd = { 'lua-language-server' },
+    root_markers = { '.luarc.json', '.luarc.jsonc', '.luacheckrc', '.stylua.toml', 'stylua.toml', 'selene.toml', 'selene.yml', '.git' },
     capabilities = M.capabilities,
+    on_attach = M.on_attach,
     on_init = M.on_init,
-
     settings = {
       Lua = {
         diagnostics = {
@@ -96,7 +97,9 @@ M.defaults = function()
         },
       },
     },
-  }
+  })
+
+  vim.lsp.enable('lua_ls')
 end
 
 return M

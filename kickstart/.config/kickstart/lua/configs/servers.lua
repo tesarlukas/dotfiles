@@ -14,14 +14,13 @@ local servers = {
   -- "rust_analyzer",
 }
 
-local lspconfig = require 'lspconfig'
-
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
+  vim.lsp.config(lsp, {
     on_init = on_init,
     on_attach = on_attach,
     capabilities = capabilities,
-  }
+  })
+  vim.lsp.enable(lsp)
 end
 
 require('typescript-tools').setup {
@@ -31,7 +30,7 @@ require('typescript-tools').setup {
   filetypes = { 'javascriptreact', 'typescriptreact', 'javascript', 'typescript', 'graphql' },
 }
 
-lspconfig.tailwindcss.setup {
+vim.lsp.config('tailwindcss', {
   on_init = on_init,
   on_attach = on_attach,
   capabilities = capabilities,
@@ -46,9 +45,10 @@ lspconfig.tailwindcss.setup {
       },
     },
   },
-}
+})
+vim.lsp.enable('tailwindcss')
 
-lspconfig.julials.setup {
+vim.lsp.config('julials', {
   on_init = on_init,
   -- on_attach = function(client, bufnr)
   --   on_attach(client, bufnr)
@@ -76,9 +76,10 @@ lspconfig.julials.setup {
       },
     },
   },
-}
+})
+vim.lsp.enable('julials')
 
-lspconfig.emmet_ls.setup {
+vim.lsp.config('emmet_ls', {
   capabilities = capabilities,
   filetypes = {
     'html',
@@ -97,6 +98,7 @@ lspconfig.emmet_ls.setup {
       },
     },
   },
-}
+})
+vim.lsp.enable('emmet_ls')
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
