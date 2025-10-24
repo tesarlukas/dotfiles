@@ -5,6 +5,9 @@ function M.setup()
   local cmp = require 'cmp'
   local luasnip = require 'luasnip'
   luasnip.config.setup {}
+  
+  -- Load custom snippets
+  require('luasnip-snippets')
 
   cmp.setup {
     snippet = {
