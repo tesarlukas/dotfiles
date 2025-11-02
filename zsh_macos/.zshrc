@@ -116,6 +116,8 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 alias geminif="gemini -m gemini-2.5-flash"
 
 # yazi but lf because I'm used to it
+# also a wrapper function that does change the directory as you progress the
+# tree
 function lf() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
     yazi "$@" --cwd-file="$tmp"
@@ -127,6 +129,7 @@ function lf() {
 
 eval "$(zoxide init zsh)"
 
+# wrapper around fzf so it tries to open stuff in neovim
 function fzf() {
     local selected=$(command fzf "$@")
     if [[ -n "$selected" ]]; then
