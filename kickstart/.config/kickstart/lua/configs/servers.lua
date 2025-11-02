@@ -23,6 +23,19 @@ for _, lsp in ipairs(servers) do
   vim.lsp.enable(lsp)
 end
 
+-- Configure jsonls separately to disable formatting (Biome handles it)
+vim.lsp.config('jsonls', {
+  on_init = on_init,
+  on_attach = function(client, bufnr)
+    -- Disable JSON LSP formatting since we're using Biome
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+    on_attach(client, bufnr)
+  end,
+  capabilities = capabilities,
+})
+vim.lsp.enable('jsonls')
+
 require('typescript-tools').setup {
   on_init = on_init,
   on_attach = on_attach,

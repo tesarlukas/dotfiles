@@ -248,7 +248,7 @@ return {
     end,
   },
 
-  -- Navigation
+  -- Auto-Session
   {
     'rmagatti/auto-session',
     lazy = false,
@@ -257,6 +257,7 @@ return {
     end,
   },
 
+  -- Navigation
   {
     'cbochs/grapple.nvim',
     lazy = true,
