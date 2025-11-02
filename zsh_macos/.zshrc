@@ -55,7 +55,6 @@ alias reload="source ~/.zshrc"
 alias vim="nvim"
 alias ..="cd .."
 alias emacs="vim"
-alias lf="yazi"
 
 # editor variable
 export EDITOR=nvim
@@ -112,3 +111,26 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Loading NVM immediately on shell init
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+
+# AI stuff
+alias geminif="gemini -m gemini-2.5-flash"
+
+# yazi but lf because I'm used to it
+function lf() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        builtin cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
+}
+
+eval "$(zoxide init zsh)"
+
+function fzf() {
+    local selected=$(command fzf "$@")
+    if [[ -n "$selected" ]]; then
+        cd "$(dirname "$selected")"
+        nvim "$(basename "$selected")"
+    fi
+}
