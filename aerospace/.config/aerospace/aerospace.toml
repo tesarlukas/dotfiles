@@ -15,8 +15,7 @@ after-login-command = []
 after-startup-command = [
     # JankyBorders has a built-in detection of already running process,
     # so it won't be run twice on AeroSpace restart
-    # "JankyBorders turn off for now",
-    # 'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0'
+    # 'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=4.0'
 ]
 
 # Start AeroSpace at login
@@ -67,7 +66,7 @@ on-focus-changed = ['move-mouse window-lazy-center']
 inner.horizontal = 15
 inner.vertical = 15
 # outer.top = [{ monitor."main" = 15 }, 40]
-outer.top = 15
+outer.top = 0
 outer.left = 10
 outer.bottom = 10
 outer.right = 10
@@ -144,6 +143,8 @@ alt-cmd-minus = 'resize smart -40'
 alt-cmd-equal = 'resize smart +40'
 
 alt-tab = 'focus-back-and-forth'
+alt-shift-right = 'workspace next'
+alt-shift-left = 'workspace prev'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 alt-1 = 'workspace 1'
@@ -158,16 +159,16 @@ alt-9 = 'workspace 9'
 alt-0 = 'workspace 10'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
-alt-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
-alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
-alt-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
-alt-shift-5 = ['move-node-to-workspace 5', 'workspace 5']
-alt-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
-alt-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
-alt-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
-alt-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
-alt-shift-0 = ['move-node-to-workspace 10', 'workspace 10']
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+alt-shift-6 = 'move-node-to-workspace 6'
+alt-shift-7 = 'move-node-to-workspace 7'
+alt-shift-8 = 'move-node-to-workspace 8'
+alt-shift-9 = 'move-node-to-workspace 9'
+alt-shift-0 = 'move-node-to-workspace 10'
 
 # Cycle through all windows regardless of workspace
 
