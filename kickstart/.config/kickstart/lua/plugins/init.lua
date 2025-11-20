@@ -196,7 +196,7 @@ return {
 
   {
     'lewis6991/gitsigns.nvim',
-    evetn = 'User FilePost',
+    event = 'User FilePost',
     opts = require 'configs.gitsigns',
   },
 
@@ -373,7 +373,7 @@ return {
 
   {
     'tpope/vim-rhubarb'
-  }
+  },
 
-  -- 'dstein64/vim-startuptime', -- just uncomment if measuring
+  'dstein64/vim-startuptime', -- just uncomment if measuring
 }

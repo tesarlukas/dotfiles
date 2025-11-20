@@ -2,7 +2,7 @@ local options = {
 
   base46 = {
     theme = 'everforest',
-    transparency = false,
+    transparency = true,
     changed_themes = {
       rosepine = {
         base_16 = {

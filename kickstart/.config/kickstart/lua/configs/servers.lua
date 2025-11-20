@@ -5,12 +5,12 @@ local on_init = methods.on_init
 local capabilities = methods.capabilities
 
 local servers = {
-  'html',
-  'cssls',
+  -- 'html',
+  -- 'cssls',
   -- "clangd",
-  'jsonls',
   'graphql',
-  'eslint'
+  -- 'biome',
+  'eslint',
   -- "rust_analyzer",
 }
 
@@ -41,6 +41,9 @@ require('typescript-tools').setup {
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { 'javascriptreact', 'typescriptreact', 'javascript', 'typescript', 'graphql' },
+  -- not sure if needed yet
+  root_dir = require('lspconfig.util').root_pattern('yarn.lock', 'pnpm-lock.yamml', 'tsconfig.json'),
+  single_file_support = false,
 }
 
 vim.lsp.config('tailwindcss', {
@@ -60,37 +63,6 @@ vim.lsp.config('tailwindcss', {
   },
 })
 vim.lsp.enable('tailwindcss')
-
-vim.lsp.config('julials', {
-  on_init = on_init,
-  -- on_attach = function(client, bufnr)
-  --   on_attach(client, bufnr)
-  --
-  --   -- Debug handler for diagnostics
-  --   client.handlers['textDocument/publishDiagnostics'] = function(_, result, ctx, config)
-  --     print('Received diagnostics:', vim.inspect(result.diagnostics))
-  --     vim.lsp.handlers['textDocument/publishDiagnostics'](_, result, ctx, config)
-  --   end
-  -- end,
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    -- Enable StaticLint diagnostics
-    julia = {
-      lint = {
-        enabled = true,
-        run = 'true',
-        missingrefs = 'all',
-        type = true,      -- This might be key
-        signature = true, -- And this
-      },
-      format = {
-        indent = 4,
-      },
-    },
-  },
-})
-vim.lsp.enable('julials')
 
 vim.lsp.config('emmet_ls', {
   capabilities = capabilities,

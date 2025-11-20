@@ -25,9 +25,19 @@ local opts = {
     javascriptreact = { 'prettierd' },
     json = { 'prettierd' },
     yaml = { 'prettierd', 'biome' },
-    python = { 'black' },
     graphql = { 'prettierd' },
   },
+
+  -- formatters_by_ft = {
+  --   lua = { 'stylua' },
+  --   javascript = { 'biome' },
+  --   typescript = { 'biome' },
+  --   typescriptreact = { 'biome' },
+  --   javascriptreact = { 'biome' },
+  --   json = { 'biome' },
+  --   yaml = { 'biome' },
+  --   graphql = { 'biome' },
+  -- },
 }
 
 return opts
