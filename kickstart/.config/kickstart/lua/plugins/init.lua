@@ -371,5 +371,9 @@ return {
     -- lazy = true
   },
 
+  {
+    'tpope/vim-rhubarb'
+  }
+
   -- 'dstein64/vim-startuptime', -- just uncomment if measuring
 }
