@@ -40,3 +40,22 @@ autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
     end
   end,
 })
+
+-- Force filetype detection on buffer enter
+-- This ensures the first buffer opened gets its filetype detected properly
+autocmd({ "BufRead", "BufNewFile", "BufEnter" }, {
+  group = vim.api.nvim_create_augroup("ForceFiletypeDetection", { clear = true }),
+  callback = function(args)
+    local buftype = vim.api.nvim_get_option_value("buftype", { buf = args.buf })
+    local filetype = vim.api.nvim_get_option_value("filetype", { buf = args.buf })
+    local filename = vim.api.nvim_buf_get_name(args.buf)
+
+    -- Only for normal file buffers that don't have a filetype yet
+    if buftype == "" and filetype == "" and filename ~= "" then
+      vim.schedule(function()
+        -- Force filetype detection
+        vim.cmd("filetype detect")
+      end)
+    end
+  end,
+})

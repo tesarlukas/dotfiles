@@ -187,7 +187,7 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    main = 'nvim-treesitter.configs', -- Sets main module to use for opts
+    main = 'nvim-treesitter.configs',
     opts = require 'configs.treesitter',
     dependencies = {
       'windwp/nvim-ts-autotag',
