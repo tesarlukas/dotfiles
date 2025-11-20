@@ -114,3 +114,8 @@ map('n', '<leader>ot', '<cmd>ObsidianTemplate<CR>', { desc = '[O]bsidian [T]empl
 
 -- Supermaven
 map('n', '<leader>ts', ':SupermavenToggle<CR>', { desc = '[T]oggle [S]upermaven' })
+
+
+-- turn offs
+map('n', 'H', '<Nop>')
+map('n', 'L', '<Nop>')
