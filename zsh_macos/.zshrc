@@ -70,8 +70,10 @@ alias exruna="npx expo run:android"
 alias exclean="npx expo prebuild --clean"
 
 # python
-# export PATH=$HOME/.pyenv/bin:$PATH
-# eval "$(pyenv init --path)"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
 
 #package manager for ruby
 export PATH="$HOME/.rbenv/bin:$PATH"
