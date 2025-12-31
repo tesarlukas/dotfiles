@@ -97,9 +97,4 @@ o.whichwrap:append '<>[]hl'
 -- Session options - including localoptions ensures filetype and highlighting work correctly
 o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
 
--- vim.opt.guicursor = {
---   'n-v-c:block', -- Normal, visual, command modes: block cursor (no blink)
---   'i-ci-ve:block', -- Insert mode: blinking block (4Hz)
---   'r-cr:block', -- Replace mode: block cursor
---   'o:block', -- Operator pending mode: block cursor
--- }
+o.guicursor = 'n-v-c:block,i:block'
