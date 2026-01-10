@@ -87,17 +87,17 @@ require('lazy').setup({
   },
 })
 
-dofile(vim.g.base46_cache .. 'defaults')
-dofile(vim.g.base46_cache .. 'statusline')
-dofile(vim.g.base46_cache .. 'treesitter')
-dofile(vim.g.base46_cache .. 'lsp')
-dofile(vim.g.base46_cache .. 'syntax')
-
+-- NOTE: This is probably not needed as there cache join in loop under this
+-- dofile(vim.g.base46_cache .. 'defaults')
+-- dofile(vim.g.base46_cache .. 'statusline')
+-- dofile(vim.g.base46_cache .. 'treesitter')
+-- dofile(vim.g.base46_cache .. 'lsp')
+-- dofile(vim.g.base46_cache .. 'syntax')
+--
 -- (method 2, for non lazyloaders) to load all highlights at once
 for _, v in ipairs(vim.fn.readdir(vim.g.base46_cache)) do
   dofile(vim.g.base46_cache .. v)
 end
--- vim.api.nvim_command 'colorscheme decay'
 
 require 'mappings'
 
