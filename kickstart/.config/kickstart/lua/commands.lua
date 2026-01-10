@@ -1,0 +1,8 @@
+vim.api.nvim_create_user_command('InsertToday', function()
+  local year = os.date('%Y')
+  local month = os.date('%B')
+  local day_num = tonumber(os.date('%d'))
+  local day_name = os.date('%A')
+  local date = string.format('%s, %s, %d, %s', year, month, day_num, day_name)
+  vim.api.nvim_put({ date }, 'c', true, true)
+end, {})

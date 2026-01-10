@@ -5,7 +5,7 @@ function M.setup()
   local cmp = require 'cmp'
   local luasnip = require 'luasnip'
   luasnip.config.setup {}
-  
+
   -- Load custom snippets
   require('luasnip-snippets')
 
@@ -69,15 +69,28 @@ function M.setup()
       -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
       --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
     },
+    preselect = cmp.PreselectMode.None,
+    sorting = {
+      priority_weight = 2,
+      comparators = {
+        cmp.config.compare.exact, -- exact match gets priority
+        cmp.config.compare.score,
+        cmp.config.compare.recently_used,
+        cmp.config.compare.kind,
+        cmp.config.compare.sort_text,
+        cmp.config.compare.length,
+        cmp.config.compare.order,
+      },
+    },
     sources = {
       {
         name = 'lazydev',
         -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
         group_index = 0,
       },
-      { name = 'nvim_lsp' },
-      { name = 'luasnip' },
-      { name = 'path' },
+      { name = 'nvim_lsp', priority = 1000 },
+      { name = 'luasnip',  priority = 900 },
+      { name = 'path',     priority = 500 },
     },
   }
 end

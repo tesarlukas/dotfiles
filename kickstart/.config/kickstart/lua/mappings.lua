@@ -121,3 +121,5 @@ map('n', 'L', '<Nop>')
 
 -- LSP restart
 map('n', '<leader>lsr', ':LspRestart <CR>')
+
+map('n', '<leader>to', ":InsertToday <CR>", { desc = 'Insert [T][o]day' })

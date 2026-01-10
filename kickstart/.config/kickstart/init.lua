@@ -49,7 +49,7 @@ vim.g.base46_cache = vim.fn.stdpath 'data' .. '/base46_cache/'
 
 require 'options'
 require 'autocmds'
-require 'colors'
+require 'commands'
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 -- See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
