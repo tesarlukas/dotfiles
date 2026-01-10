@@ -37,6 +37,7 @@ function M.setup()
         'node_modules',
         'yarn.lock',
         '%.snap',
+        '%.git/',  -- Ignore .git directory contents (but not .github, .gitignore, etc.)
       },
       layout_config = {
         horizontal = {
@@ -45,6 +46,11 @@ function M.setup()
         },
         -- width = 0.87,
         -- height = 0.80,
+      },
+    },
+    pickers = {
+      find_files = {
+        hidden = true,  -- Show hidden files by default
       },
     },
     extensions = {
