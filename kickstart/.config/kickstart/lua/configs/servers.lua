@@ -10,8 +10,9 @@ local servers = {
   -- "clangd",
   'graphql',
   -- 'biome',
+  'postgres_lsp',
+  'gopls',
   'eslint',
-  -- "rust_analyzer",
 }
 
 for _, lsp in ipairs(servers) do
@@ -23,7 +24,7 @@ for _, lsp in ipairs(servers) do
   vim.lsp.enable(lsp)
 end
 
--- Configure jsonls separately to disable formatting (Biome handles it)
+-- Configure jsonls separately to disable formatting (Biome/Prettier handles it)
 vim.lsp.config('jsonls', {
   on_init = on_init,
   on_attach = function(client, bufnr)
@@ -42,8 +43,8 @@ require('typescript-tools').setup {
   capabilities = capabilities,
   filetypes = { 'javascriptreact', 'typescriptreact', 'javascript', 'typescript', 'graphql' },
   -- not sure if needed yet
-  root_dir = require('lspconfig.util').root_pattern('yarn.lock', 'pnpm-lock.yamml', 'tsconfig.json'),
-  single_file_support = false,
+  -- root_dir = require('lspconfig.util').root_pattern('yarn.lock', 'pnpm-lock.yamml', 'tsconfig.json'),
+  -- single_file_support = false,
 }
 
 vim.lsp.config('tailwindcss', {
