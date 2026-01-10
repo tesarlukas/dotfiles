@@ -1,7 +1,7 @@
-[[plugin.deps]]
-use = "orhnk/system-clipboard"
-rev = "888026c"
-hash = "9f82a544335a53d79e87ea315746caaa"
-
-[flavor]
+[plugin]
 deps = []
+
+[[flavor.deps]]
+use = "Chromium-3-Oxide/everforest-medium"
+rev = "0158f0f"
+hash = "a7c36abf0b13289aceb1c20a17c6a63e"
