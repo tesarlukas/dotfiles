@@ -5,10 +5,6 @@
 [mgr]
 cwd = { fg = "#7fbbb3" }
 
-# Hovered
-hovered         = { reversed = true }
-preview_hovered = { underline = true }
-
 # Find
 find_keyword  = { fg = "#dbbc7f", bold = true, italic = true, underline = true }
 find_position = { fg = "#d699b6", bg = "reset", bold = true, italic = true }
@@ -50,6 +46,16 @@ sep_outer = { open = "", close = "" }
 # : }}}
 
 
+# : Indicator {{{
+
+[indicator]
+parent  = { reversed = true }
+current = { reversed = true }
+preview = { underline = true }
+
+# : }}}
+
+
 # : Mode {{{
 
 [mode]
@@ -75,11 +81,11 @@ sep_left  = { open = "", close = "" }
 sep_right = { open = "", close = "" }
 
 # Permissions
-permissions_s = { fg = "#2d353b" }
-permissions_t = { fg = "#a7c080" }
-permissions_r = { fg = "#dbbc7f" }
-permissions_w = { fg = "#e67e80" }
-permissions_x = { fg = "#7fbbb3" }
+perm_sep   = { fg = "#2d353b" }
+perm_type  = { fg = "#a7c080" }
+perm_read  = { fg = "#dbbc7f" }
+perm_write = { fg = "#e67e80" }
+perm_exec  = { fg = "#7fbbb3" }
 
 # Progress
 progress_label  = { bold = true }
@@ -222,8 +228,8 @@ rules = [
 	{ mime = "application/{pdf,doc,rtf,vnd.*}", fg = "#7fbbb3" },
 
 	# Fallback
-	{ name = "*", fg = "#83c092" },
-	{ name = "*/", fg = "#a7c080" }
+	{ url = "*", fg = "#83c092" },
+	{ url = "*/", fg = "#a7c080" }
 ]
 
 # : }}}
