@@ -98,3 +98,5 @@ o.whichwrap:append '<>[]hl'
 o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
 
 o.guicursor = 'n-v-c:block,i:block'
+
+o.whichwrap = ""
