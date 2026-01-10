@@ -72,7 +72,7 @@ return {
           require('conform').format { async = true, lsp_format = 'fallback' }
         end,
         mode = '',
-        desc = '[F]ormat buffer',
+        desc = '[F]or[m]at buffer',
       },
     },
     opts = require 'configs.conform',
@@ -99,12 +99,12 @@ return {
           -- `friendly-snippets` contains a variety of premade snippets.
           --    See the README about individual language/framework/plugin snippets:
           --    https://github.com/rafamadriz/friendly-snippets
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
+          {
+            'rafamadriz/friendly-snippets',
+            config = function()
+              require('luasnip.loaders.from_vscode').lazy_load()
+            end,
+          },
         },
       },
 
@@ -368,12 +368,11 @@ return {
 
   {
     'sindrets/diffview.nvim',
-    -- lazy = true
   },
 
   {
     'tpope/vim-rhubarb'
   },
 
-  'dstein64/vim-startuptime', -- just uncomment if measuring
+  -- 'dstein64/vim-startuptime', -- just uncomment if measuring
 }
