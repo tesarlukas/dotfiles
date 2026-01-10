@@ -19,13 +19,14 @@ local opts = {
   -- end,
   formatters_by_ft = {
     lua = { 'stylua' },
-    javascript = { 'prettierd' },
-    typescript = { 'prettierd' },
-    typescriptreact = { 'prettierd' },
-    javascriptreact = { 'prettierd' },
-    json = { 'prettierd' },
+    javascript = { "prettierd", 'prettier' },
+    typescript = { "prettierd", 'prettier' },
+    typescriptreact = { 'prettierd', 'prettier' },
+    javascriptreact = { 'prettierd', 'prettier' },
+    json = { 'prettierd', 'prettier' },
+    jsonc = { "prettied", 'prettier' },
     yaml = { 'prettierd', 'biome' },
-    graphql = { 'prettierd' },
+    graphql = { 'prettierd', 'prettier' },
   },
 
   -- formatters_by_ft = {
