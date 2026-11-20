@@ -1,5 +1,6 @@
 local opts = {
   lsp_fallback = true,
+  default_format_opts = { stop_after_first = true },
   notify_on_error = false,
   -- format_on_save = function(bufnr)
   --   -- Disable "format_on_save lsp_fallback" for languages that don't
@@ -24,9 +25,8 @@ local opts = {
     typescriptreact = { 'prettierd', 'prettier' },
     javascriptreact = { 'prettierd', 'prettier' },
     json = { 'prettierd', 'prettier' },
-    jsonc = { "prettied", 'prettier' },
+    jsonc = { "prettierd", 'prettier' },
     yaml = { 'prettierd', "prettier", 'biome' },
-    yml = { 'prettierd', "prettier", 'biome' },
     graphql = { 'prettierd', 'prettier' },
   },
 
