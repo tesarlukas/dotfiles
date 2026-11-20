@@ -1,7 +1,7 @@
 vim.lsp.config('lua_ls', {
   settings = {
     Lua = {
-      runtime = { version = 'LuaJIT' },
+      runtime = { version = 'LuaJIT', path = { 'lua/?.lua', 'lua/?/init.lua' } },
       workspace = { library = { vim.env.VIMRUNTIME } },
     },
   },
