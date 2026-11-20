@@ -1,6 +1,6 @@
 local map = vim.keymap.set
 
--- makes the paste over something not send it to the copy register 
+-- makes the paste over something not send it to the copy register
 map('x', '<leader>p', [["_dP]])
 
 -- don't change the position of the cursor when pressing J
@@ -46,4 +46,3 @@ map('n', 'L', '<Nop>')
 
 -- LSP restart
 map('n', '<leader>lsr', ':lsp restart<CR>')
-

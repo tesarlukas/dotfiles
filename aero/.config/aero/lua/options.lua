@@ -62,7 +62,7 @@ o.listchars = { tab = '  ', trail = ' ', nbsp = '␣' }
 -- no key press crosses to the next line
 o.whichwrap = ''
 
-o.linebreak  = true
+o.linebreak = true
 
 -- border of all the floating windows
 o.winborder = 'rounded'
