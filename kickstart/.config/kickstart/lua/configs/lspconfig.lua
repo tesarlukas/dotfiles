@@ -70,7 +70,6 @@ M.capabilities.textDocument.completion.completionItem = {
 }
 
 M.defaults = function()
-  dofile(vim.g.base46_cache .. 'lsp')
   require('nvchad.lsp').diagnostic_config()
 
   vim.lsp.config('lua_ls', {

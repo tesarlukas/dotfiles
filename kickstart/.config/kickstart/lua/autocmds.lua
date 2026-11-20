@@ -41,6 +41,14 @@ autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
   end,
 })
 
+-- Enable treesitter highlighting (nvim-treesitter v1.0 removed its highlight module)
+autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('kickstart-treesitter', { clear = true }),
+  callback = function()
+    pcall(vim.treesitter.start)
+  end,
+})
+
 -- Force filetype detection on buffer enter
 -- This ensures the first buffer opened gets its filetype detected properly
 autocmd({ "BufRead", "BufNewFile", "BufEnter" }, {

@@ -1,5 +1,3 @@
-dofile(vim.g.base46_cache .. 'mason')
-
 require('mason').setup()
 
 return {

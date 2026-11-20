@@ -51,6 +51,13 @@ require 'options'
 require 'autocmds'
 require 'commands'
 
+-- Neovim 0.12 removed ft_to_lang; shim it for plugins that haven't caught up yet (e.g. telescope)
+if not vim.treesitter.language.ft_to_lang then
+  vim.treesitter.language.ft_to_lang = function(ft)
+    return vim.treesitter.language.get_lang(ft) or ft
+  end
+end
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 -- See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -87,17 +94,20 @@ require('lazy').setup({
   },
 })
 
--- NOTE: This is probably not needed as there cache join in loop under this
--- dofile(vim.g.base46_cache .. 'defaults')
--- dofile(vim.g.base46_cache .. 'statusline')
--- dofile(vim.g.base46_cache .. 'treesitter')
--- dofile(vim.g.base46_cache .. 'lsp')
--- dofile(vim.g.base46_cache .. 'syntax')
---
 -- (method 2, for non lazyloaders) to load all highlights at once
 for _, v in ipairs(vim.fn.readdir(vim.g.base46_cache)) do
-  dofile(vim.g.base46_cache .. v)
+ dofile(vim.g.base46_cache .. v)
 end
+
+require('base16-colorscheme').with_config({
+  telescope = true,
+  indentblankline = true,
+  notify = true,
+  ts_rainbow = true,
+  cmp = true,
+  illuminate = true,
+  dapui = true,
+})
 
 require 'mappings'
 

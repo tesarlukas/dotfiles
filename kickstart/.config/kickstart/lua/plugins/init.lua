@@ -150,13 +150,9 @@ return {
       scope = { char = '│', highlight = 'IblScopeChar' },
     },
     config = function(_, opts)
-      dofile(vim.g.base46_cache .. 'blankline')
-
       local hooks = require 'ibl.hooks'
       hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
       require('ibl').setup(opts)
-
-      dofile(vim.g.base46_cache .. 'blankline')
     end,
   },
 
@@ -187,11 +183,13 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    main = 'nvim-treesitter.configs',
-    opts = require 'configs.treesitter',
+    event = 'User FilePost',
     dependencies = {
       'windwp/nvim-ts-autotag',
     },
+    config = function()
+      require('nvim-treesitter').install(require 'configs.treesitter')
+    end,
   },
 
   {
@@ -210,7 +208,6 @@ return {
     'nvim-telescope/telescope.nvim',
     lazy = true,
     event = 'VimEnter',
-    branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
       { -- If encountering errors, see telescope-fzf-native README for installation instructions
@@ -300,7 +297,7 @@ return {
     ft = 'markdown',
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
     -- dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" }, -- if you use standalone mini plugins
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    dependencies = { 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
     opts = {},
@@ -373,6 +370,10 @@ return {
   {
     'tpope/vim-rhubarb'
   },
+
+  {
+    'RRethy/base16-nvim'
+  }
 
   -- 'dstein64/vim-startuptime', -- just uncomment if measuring
 }
