@@ -1,8 +1,8 @@
 local options = {
 
   base46 = {
-    theme = 'everforest',
-    transparency = true,
+    theme = 'kanagawa-dragon',
+    transparency = false,
     changed_themes = {
       rosepine = {
         base_16 = {
@@ -21,18 +21,34 @@ local options = {
       },
       everforest = {
         base_30 = {
+          -- these change things
           black = '#181917',
           darker_black = '#181917',
+
           -- darker_black = '#2b3339' -- origblack,
         },
         base_16 = {
+          -- these change things
           base00 = '#181917',
         },
       },
+      ['kanagawa-dragon'] = {
+        base_30 = {
+          -- these change things
+          -- black = '#181616',
+          -- darker_black = '#181616',
+          black = '#251B17',
+          darker_black = '#251B17',
+        },
+        base_16 = {
+          -- these change things
+          -- base00 = '#181616',
+          base00 = '#251B17',
+        },
+      }
     },
     hl_override = {
       NvimTreeCursorLine = { bg = 'black2' },
-
       -- mix colors, mixes black/blue from your theme by 10%
     },
   },
@@ -41,7 +57,7 @@ local options = {
     cmp = {
       icons_left = false, -- only for non-atom styles!
       lspkind_text = true,
-      style = 'default', -- default/flat_light/flat_dark/atom/atom_colored
+      style = 'default',  -- default/flat_light/flat_dark/atom/atom_colored
       format_colors = {
         tailwind = false, -- will work for css lsp too
         -- icon = '󱓻',
@@ -77,7 +93,7 @@ local options = {
   lsp = { signature = true },
 
   cheatsheet = {
-    theme = 'grid', -- simple/grid
+    theme = 'grid',                                                     -- simple/grid
     excluded_groups = { 'terminal (t)', 'autopairs', 'Nvim', 'Opens' }, -- can add group name or with mode
   },
 
