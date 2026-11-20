@@ -12,4 +12,5 @@ require 'treesitter'
 require 'finder'
 require 'tree'
 require 'navigation'
-
+require 'theme'
+require 'statusline'
