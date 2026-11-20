@@ -92,7 +92,6 @@ map('n', '<space>vdo', ':DiffviewOpen <CR>')
 map('n', '<space>vdc', ':DiffviewClose <CR>')
 map('n', '<space>vdm', ':DiffviewOpen main <CR>')
 -- GitSigns stuff
-map('n', '<leader>ss', ':Gitsigns stage_hunk<CR>')
 map('n', '<leader>vd', ':Gitsigns diffthis<CR>')
 
 -- Toggle transparency
@@ -108,10 +107,6 @@ end, { desc = '[T][h]eme switcher' })
 -- Typescript tools
 map('n', '<leader>ru', '<cmd>TSToolsRemoveUnusedImports<CR>', { desc = '[R]emove [U]nused (TS)' })
 
--- Obsidian
-map('n', '<leader>od', '<cmd>ObsidianDailies<CR>', { desc = '[O]bsidian [D]ailies' })
-map('n', '<leader>ot', '<cmd>ObsidianTemplate<CR>', { desc = '[O]bsidian [T]emplates' })
-
 -- Supermaven
 map('n', '<leader>ts', ':SupermavenToggle<CR>', { desc = '[T]oggle [S]upermaven' })
 
@@ -120,6 +115,6 @@ map('n', 'H', '<Nop>')
 map('n', 'L', '<Nop>')
 
 -- LSP restart
-map('n', '<leader>lsr', ':LspRestart <CR>')
+map('n', '<leader>lsr', ':lsp restart<CR>')
 
 map('n', '<leader>to', ":InsertToday <CR>", { desc = 'Insert [T][o]day' })
