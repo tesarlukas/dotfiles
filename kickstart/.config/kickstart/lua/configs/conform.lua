@@ -25,7 +25,8 @@ local opts = {
     javascriptreact = { 'prettierd', 'prettier' },
     json = { 'prettierd', 'prettier' },
     jsonc = { "prettied", 'prettier' },
-    yaml = { 'prettierd', 'biome' },
+    yaml = { 'prettierd', "prettier", 'biome' },
+    yml = { 'prettierd', "prettier", 'biome' },
     graphql = { 'prettierd', 'prettier' },
   },
 
