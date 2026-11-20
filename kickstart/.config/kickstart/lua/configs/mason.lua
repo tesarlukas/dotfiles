@@ -1,5 +1,3 @@
-require('mason').setup()
-
 return {
   PATH = 'skip',
 

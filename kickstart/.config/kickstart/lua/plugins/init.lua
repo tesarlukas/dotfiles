@@ -160,7 +160,7 @@ return {
     'williamboman/mason.nvim',
     lazy = true,
     opts = function()
-      require 'configs.mason'
+      return require 'configs.mason'
     end,
   },
 
