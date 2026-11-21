@@ -3,7 +3,7 @@ vim.g.mapleader = ' '
 require 'options'
 require 'mappings'
 require 'sessions'
-require 'plugins'
+require 'plugins' -- where external stuff starts
 require 'tools' -- important to load tools right here because of the deps later
 require 'lsp'
 require 'format'
