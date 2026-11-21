@@ -24,4 +24,6 @@ vim.pack.add {
   'https://github.com/georgeguimaraes/review.nvim',
   'https://github.com/lewis6991/gitsigns.nvim',
   'https://github.com/tpope/vim-fugitive',
+  { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range '1.*' },
+  'https://github.com/windwp/nvim-autopairs',
 }
