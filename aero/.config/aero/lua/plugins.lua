@@ -22,4 +22,6 @@ vim.pack.add {
   'https://github.com/esmuellert/codediff.nvim',
   'https://github.com/MunifTanjim/nui.nvim',
   'https://github.com/georgeguimaraes/review.nvim',
+  'https://github.com/lewis6991/gitsigns.nvim',
+  'https://github.com/tpope/vim-fugitive',
 }

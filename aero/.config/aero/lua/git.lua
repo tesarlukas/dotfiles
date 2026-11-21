@@ -7,7 +7,10 @@ require('review').setup {
   keymaps = { next_file = ']u', prev_file = '[u' },
 }
 
+require('gitsigns').setup()
+
 vim.keymap.set('n', '<leader>G', '<Cmd>Review<CR>', { desc = 'Review changes' })
+vim.keymap.set('n', '<leader>g', '<Cmd>Git<CR>', { desc = 'Git status' })
 
 -- override r key press
 local reviewed = require 'review.reviewed'
@@ -79,3 +82,5 @@ end
 
 vim.keymap.set('n', ']r', reviewed_file '', { desc = 'Next reviewed file' })
 vim.keymap.set('n', '[r', reviewed_file 'b', { desc = 'Previous reviewed file' })
+
+vim.keymap.set('n', '<leader>vd', '<cmd>:CodeDiff file HEAD<CR>', { desc = 'View diff in file' })

@@ -37,8 +37,8 @@ end, { desc = 'Forward to the next file' })
 -- grapple: a short list of tagged files per git repo
 local grapple = require 'grapple'
 
-vim.keymap.set('n', '<leader>h', grapple.toggle, { desc = 'Tag or untag this file' })
-vim.keymap.set('n', '<leader>H', grapple.toggle_tags, { desc = 'Show tagged files' })
+vim.keymap.set('n', '<leader>b', grapple.toggle, { desc = 'Tag or untag this file' })
+vim.keymap.set('n', '<leader>B', grapple.toggle_tags, { desc = 'Show tagged files' })
 
 for i = 1, 4 do
   vim.keymap.set(
