@@ -7,7 +7,8 @@ vim.lsp.config('lua_ls', {
   },
 })
 
-vim.lsp.enable 'lua_ls'
+-- dropped from the old config: emmet_ls, graphql, gopls, postgres_lsp, tailwindcss
+vim.lsp.enable { 'lua_ls', 'ts_ls', 'eslint', 'jsonls' }
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
