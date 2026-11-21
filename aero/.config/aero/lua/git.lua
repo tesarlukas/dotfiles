@@ -1,18 +1,41 @@
 -- codediff's own stage-hunk key is off, gitsigns stages hunks instead
 require('codediff').setup {
-  keymaps = { view = { next_file = '<Tab>', prev_file = '<S-Tab>', stage_hunk = false } },
+  keymaps = {
+    view = {
+      next_file = '<Tab>',
+      prev_file = '<S-Tab>',
+      stage_hunk = false,
+      -- q leaves the review into the file under the cursor, at the same line; Q just quits
+      open_in_prev_tab = 'q',
+      close_on_open_in_prev_tab = true,
+      quit = 'Q',
+    },
+  },
 }
 
 require('review').setup {
-  keymaps = { next_file = ']u', prev_file = '[u' },
+  -- review.nvim's own close (export and archive the comments) moves from q to Q.
+  -- Its single `c` (list comments) is off, so that cc can commit in a review.
+  keymaps = { next_file = ']u', prev_file = '[u', close = 'Q', list_comments = false },
 }
+
+-- a review opens with the cursor in the file panel, not in the diff
+require('review.hooks')._focus_modified_pane = function() end
 
 local gitsigns = require 'gitsigns'
 gitsigns.setup()
 
 -- keys that work everywhere
 vim.keymap.set('n', '<leader>g', '<Cmd>Git<CR>', { desc = 'Git status' })
-vim.keymap.set('n', '<leader>cm', '<Cmd>botright Git commit<CR>', { desc = 'Commit staged changes' })
+
+-- cc commits inside a review or a diff, where the buffers cannot be edited anyway.
+vim.keymap.set('n', 'cc', function()
+  local in_review = require('codediff.ui.lifecycle').get_session(vim.api.nvim_get_current_tabpage()) ~= nil
+  if in_review and not vim.bo.modifiable then
+    return '<Cmd>botright Git commit<CR>'
+  end
+  return 'cc'
+end, { expr = true, desc = 'Commit in a review, change the line everywhere else' })
 
 vim.keymap.set('n', '<leader>G', '<Cmd>Review<CR>', { desc = 'Review changes' })
 vim.keymap.set('n', '<leader>vd', '<cmd>:CodeDiff file HEAD<CR>', { desc = 'View diff in file' })
@@ -20,17 +43,11 @@ vim.keymap.set('n', '<leader>vd', '<cmd>:CodeDiff file HEAD<CR>', { desc = 'View
 vim.keymap.set('n', '<leader>hs', gitsigns.stage_hunk, { desc = 'Stage hunk' })
 vim.keymap.set('n', '<leader>hr', gitsigns.reset_hunk, { desc = 'Reset hunk' })
 
--- fugitive status: `cm` commits like <leader>cm, instead of fugitive's `cc`
+-- fugitive status: `cc` commits as usual, but in a full-width split
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'fugitive',
   callback = function(ev)
-    vim.keymap.del('n', 'cc', { buffer = ev.buf })
-    vim.keymap.set(
-      'n',
-      'cm',
-      '<Cmd>botright Git commit<CR>',
-      { buffer = ev.buf, nowait = true, desc = 'Commit staged changes' }
-    )
+    vim.keymap.set('n', 'cc', '<Cmd>botright Git commit<CR>', { buffer = ev.buf, desc = 'Commit staged changes' })
   end,
 })
 
