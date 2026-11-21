@@ -9,6 +9,10 @@
       "src": "https://github.com/saghen/blink.cmp",
       "version": "1.0.0 - 2.0.0"
     },
+    "claudecode.nvim": {
+      "rev": "6ad8e0fdbda84486f13f7f1fa4802942f4877f13",
+      "src": "https://github.com/coder/claudecode.nvim"
+    },
     "codediff.nvim": {
       "rev": "eee54e78e6f152a6eb03b090e95f7576c96a5ad9",
       "src": "https://github.com/esmuellert/codediff.nvim"
