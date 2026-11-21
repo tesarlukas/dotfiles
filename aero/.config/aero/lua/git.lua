@@ -12,13 +12,27 @@ gitsigns.setup()
 
 -- keys that work everywhere
 vim.keymap.set('n', '<leader>g', '<Cmd>Git<CR>', { desc = 'Git status' })
-vim.keymap.set('n', '<leader>cc', '<Cmd>botright Git commit<CR>', { desc = 'Commit staged changes' })
+vim.keymap.set('n', '<leader>cm', '<Cmd>botright Git commit<CR>', { desc = 'Commit staged changes' })
 
 vim.keymap.set('n', '<leader>G', '<Cmd>Review<CR>', { desc = 'Review changes' })
 vim.keymap.set('n', '<leader>vd', '<cmd>:CodeDiff file HEAD<CR>', { desc = 'View diff in file' })
 
 vim.keymap.set('n', '<leader>hs', gitsigns.stage_hunk, { desc = 'Stage hunk' })
 vim.keymap.set('n', '<leader>hr', gitsigns.reset_hunk, { desc = 'Reset hunk' })
+
+-- fugitive status: `cm` commits like <leader>cm, instead of fugitive's `cc`
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'fugitive',
+  callback = function(ev)
+    vim.keymap.del('n', 'cc', { buffer = ev.buf })
+    vim.keymap.set(
+      'n',
+      'cm',
+      '<Cmd>botright Git commit<CR>',
+      { buffer = ev.buf, nowait = true, desc = 'Commit staged changes' }
+    )
+  end,
+})
 
 -- review: reviewed marks
 -- override r key press
