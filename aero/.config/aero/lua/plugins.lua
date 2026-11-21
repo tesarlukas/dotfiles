@@ -26,5 +26,11 @@ vim.pack.add {
   'https://github.com/tpope/vim-fugitive',
   { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range '1.*' },
   'https://github.com/windwp/nvim-autopairs',
-  'https://github.com/coder/claudecode.nvim'
+  'https://github.com/coder/claudecode.nvim',
+  'https://github.com/tpope/vim-surround',
+  'https://github.com/folke/todo-comments.nvim',
+  'https://github.com/lukas-reineke/indent-blankline.nvim',
+  'https://github.com/catgoose/nvim-colorizer.lua',
+  'https://github.com/MeanderingProgrammer/render-markdown.nvim',
+  'https://github.com/mfussenegger/nvim-lint',
 }
