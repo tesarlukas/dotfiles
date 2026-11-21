@@ -11,6 +11,7 @@ require('codediff').setup {
       quit = 'Q',
     },
   },
+  explorer = { view_mode = 'tree' },
 }
 
 require('review').setup {
