@@ -46,16 +46,25 @@ function parts.mode()
   return hl('St_' .. name .. 'Mode') .. ' ' .. label .. ' ' .. edge
 end
 
+-- what to call windows that are tools, not files; the key is the window's filetype
+local tool_names = {
+  NvimTree = 'files',
+  TelescopePrompt = 'telescope',
+}
+
 -- the file name with a few of the folders above it, never climbing above the working directory
 function parts.file()
   local path = vim.api.nvim_buf_get_name(0)
-  local shown = '%t' -- Neovim's own name, used for buffers that are not a file on disk
-  if path ~= '' and vim.bo.buftype == '' then
+  local shown, flags = '%t', ' %m' -- '%t' is Neovim's own name for the buffer, '%m' its modified flag
+  if vim.bo.buftype ~= '' then
+    -- not a file on disk: a tool window, a help page, a terminal
+    shown, flags = tool_names[vim.bo.filetype] or '%t', ' '
+  elseif path ~= '' then
     -- ':.' makes the path relative to the working directory when the file is inside it
     local pieces = vim.split(vim.fn.fnamemodify(path, ':.'), '/', { trimempty = true })
     shown = escape(table.concat(pieces, '/', math.max(1, #pieces - levels_above)))
   end
-  return hl 'St_file' .. ' ' .. shown .. ' %m' .. hl 'St_file_sep' .. sep
+  return hl 'St_file' .. ' ' .. shown .. flags .. hl 'St_file_sep' .. sep
 end
 
 -- branch and change counts; the numbers come from gitsigns, so this stays empty without it
@@ -75,6 +84,25 @@ function parts.git()
   return hl 'St_gitIcons' .. text .. ' '
 end
 
+-- error, warning, hint and info counts for this file, each only when it is not zero
+function parts.diagnostics()
+  local counts = vim.diagnostic.count(0)
+  local severity = vim.diagnostic.severity
+  local text = ''
+  for _, kind in ipairs {
+    { severity.ERROR, 'E', 'St_lspError' },
+    { severity.WARN, 'W', 'St_lspWarning' },
+    { severity.HINT, 'H', 'St_LspHints' },
+    { severity.INFO, 'I', 'St_LspInfo' },
+  } do
+    local count = counts[kind[1]]
+    if count and count > 0 then
+      text = text .. hl(kind[3]) .. kind[2] .. count .. ' '
+    end
+  end
+  return text
+end
+
 -- the name of the working directory
 function parts.dir()
   local path = vim.fn.fnamemodify(vim.fn.getcwd(), ':~')
@@ -87,7 +115,7 @@ function parts.position()
 end
 
 -- what is shown, left to right; '%=' pushes everything after it to the right edge
-local layout = { 'mode', 'file', 'git', '%=', 'dir', 'position' }
+local layout = { 'mode', 'file', 'git', '%=', 'diagnostics', 'dir', 'position' }
 
 function M.render()
   local out = {}
@@ -98,5 +126,12 @@ function M.render()
 end
 
 vim.o.statusline = "%!v:lua.require'statusline'.render()"
+
+-- redraw the bar as soon as the diagnostics change, not only on the next keypress
+vim.api.nvim_create_autocmd('DiagnosticChanged', {
+  callback = function()
+    vim.cmd.redrawstatus()
+  end,
+})
 
 return M

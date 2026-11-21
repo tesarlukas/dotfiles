@@ -23,7 +23,7 @@ o.mouse = 'a'
 o.ignorecase = true
 o.smartcase = true
 
-o.showmode = true
+o.showmode = false
 
 o.breakindent = true
 
